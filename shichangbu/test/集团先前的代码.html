@@ -1,0 +1,11 @@
+sql="select * from (select * from 楼宇,集团 where 集团.集团名称 like '%"&id&"%' and 楼宇.楼宇名称 in (select 集团.楼宇名称 from 集团 where 集团.集团名称 like '%"&id&"%')) where 集团.楼宇名称=楼宇.楼宇名称 order by 集团.集团名称" 
+rs.open sql,conn,1,1 
+
+
+sql2="select * from( select * from 集团 where 集团名称 like '%"&id&"%'order by 集团名称) where 集团名称 not in (select 集团名称 from (select * from 集团,楼宇 where 集团.集团名称 like '%"&id&"%' and 楼宇.楼宇名称 in (select 集团.楼宇名称 from 集团 where 集团.集团名称 like '%"&id&"%')) where 集团.楼宇名称=楼宇.楼宇名称 order by 集团.集团名称) "
+rs2.open sql2,conn,1,1 
+sql3="select count(*) from 楼宇 where 楼宇.楼宇名称 in (select 集团.楼宇名称 from 集团 where 集团.集团名称 like '%"&id&"%')"
+rs3.open sql3,conn,1,1 
+sql4="select count(*) from 集团 where 集团名称 like '%"&id&"%' "
+rs4.open sql4,conn,1,1 
+

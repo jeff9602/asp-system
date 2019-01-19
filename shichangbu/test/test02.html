@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button onclick="fun1()">gai</button>
+
+	<script>
+		function fun1(){
+			var oDoc=top.parent.document;
+			var f1=oDoc.getElementById('1');
+			var img2=f1.contentWindow.document.getElementById('img2')
+			var img1=oDoc.getElementById("img1");
+			//var oAnotherFrame=oDoc.frames["1"];
+			// var oAnotherFrame=oDoc.frames.1;
+			img1.style.width="200px";
+			
+			// var img2=oAnotherFrame.document.getElementById("img2");
+			img2.style.width="200px";		
+		}
+	</script>
+</body>
+
+</html>
